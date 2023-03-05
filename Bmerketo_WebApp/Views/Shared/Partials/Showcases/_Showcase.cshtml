@@ -1,0 +1,32 @@
+﻿@model HomeIndexViewModel
+
+<!-- showcase -->
+@if (Model != null)
+{
+    <section class="showcase">
+        <div class="container">
+            <div class="column-1">
+                <div class="content">
+                    @if (!string.IsNullOrEmpty(Model.Showcase.Title_2))
+                    {
+                        <div class="title-3">@Model.Showcase.Title_2</div>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.Showcase.Title_1))
+                    {
+                        <div class="title-1">@Model.Showcase.Title_1</div>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.Showcase.NavLink.ControllerName))
+                    {
+                        <a class="btn btn-theme" asp-controller="@Model.Showcase.NavLink.ControllerName" asp-action="@Model.Showcase.NavLink.ActionName">@Model.Showcase.NavLink.Name</a>
+                    }
+                </div>
+            </div>
+            <div class="column-2">
+                @if (!string.IsNullOrEmpty(Model.Showcase.Image.Source))
+                {
+                    <img src="@Model.Showcase.Image.Source" alt="@Model.Showcase.Image.Alt">
+                }
+            </div>
+        </div>
+    </section>
+}

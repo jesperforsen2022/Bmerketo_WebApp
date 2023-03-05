@@ -1,0 +1,48 @@
+﻿@{
+    var menulinks = new NavLinksViewModel
+            {
+                ClassName = "menu-links",
+                Links = new List<NavLinkModel>
+            {
+                new NavLinkModel { ControllerName = "Home", ActionName = "Index", Name = "Home"},
+                new NavLinkModel { ControllerName = "Products", ActionName = "Index", Name = "Products"},
+                new NavLinkModel { ControllerName = "Contacts", ActionName = "Index", Name = "Contacts"}
+            }
+            };
+    var menuicons = new NavLinksViewModel
+            {
+                ClassName = "menu-icons",
+                Links = new List<NavLinkModel>
+            {
+                new NavLinkModel { ControllerName = "Search", ActionName = "Index", Name = "<i class=\"fa-regular fa-search\"></i>"},
+                new NavLinkModel { ControllerName = "Account", ActionName = "SignIn", Name = "Login"},
+                new NavLinkModel { ControllerName = "ShoppingCart", ActionName = "Index", Name = "<i class=\"fa-regular fa-bag-shopping\"></i>"}
+            }
+            };
+}
+
+<header>
+    <div class="container">
+        <a class="logotype" asp-controller="Home" asp-action="Index"><img src="~/images/logo.svg" alt="bmerketo" /></a>
+        <div id="menu" class="collapse">
+            <nav id="menu-links" class="menu-links">
+                <partial name="~/Views/Shared/Partials/Navigation/_NavLinks.cshtml" model="@menulinks" />
+            </nav>
+            <partial name="~/Views/Shared/Partials/Navigation/_NavLinks.cshtml" model="@menuicons" />
+            <button id="toggle-icon" class="menu-link" data-bs-toggle="collapse" data-bs-target="#menu-links">
+                <i class="fa-regular fa-bars"></i>
+            </button>
+
+            @if (User.IsInRole("Administrator"))
+            {
+                <a class="menu-link" asp-controller="Admin" asp-action="Index">Admin Center</a>
+            }
+
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <a class="menu-link" asp-controller="Account" asp-action="Index">My Account</a>
+            }
+
+        </div>
+    </div>
+</header>

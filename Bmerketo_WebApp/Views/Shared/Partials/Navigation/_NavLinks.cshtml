@@ -1,0 +1,12 @@
+﻿@model NavLinksViewModel
+
+<nav class="@Model.ClassName">
+
+    @foreach (var link in Model.Links)
+    {
+        <a asp-controller="@link.ControllerName" asp-action="@link.ActionName" class="menu-link">
+            @Html.Raw(link.Name)
+        </a>
+    }
+
+</nav>

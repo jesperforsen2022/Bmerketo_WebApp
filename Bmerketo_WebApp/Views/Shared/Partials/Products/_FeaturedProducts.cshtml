@@ -1,0 +1,16 @@
+﻿@model HomeIndexViewModel
+<!-- featured products -->
+<section class="featured-products">
+    <div class="container">
+        <div class="title">Best Collection</div>
+        <div class="categories">
+            <div class="category-links">
+                <partial name="~/Views/Shared/Partials/Navigation/_CategoryLinks.cshtml" />
+            </div>
+        </div>
+        <div class="product-grid">
+            <partial name="~/Views/Shared/Partials/Products/_ProductCards.cshtml" />
+        </div>
+        <div class="btn-container"><button class="load-container-btn">Load More</button></div>
+    </div>
+</section>

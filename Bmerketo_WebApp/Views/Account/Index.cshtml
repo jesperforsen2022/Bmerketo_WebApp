@@ -1,0 +1,36 @@
+﻿@model AccountIndexViewModel
+@{
+    ViewData["Title"] = "Profile Page";
+}
+<h1>Profile Page</h1>
+<section class="product-detail-container">
+    <div class="product-details-second-container">
+        <div class="product-details-column-1">
+            <div class="profile-picture-container">
+                @if (!string.IsNullOrEmpty(Model.Profile.ImageName))
+                {
+                    <img class="profile-picture" src="~/images/profiles/@Model.Profile.ImageName" alt="profile image">
+                }
+                else
+                {
+                    <img class"profile-picture" src="~/images/abstract-user-flat-4.png" alt="profile image">
+                }
+            </div>
+            <div class="product-details-imgs-smaller">
+            </div>
+        </div>
+        <div class="product-details-column-2">
+            <div class="content">
+                <div class="title-2">Welcome @User.FindFirst("DisplayName")?.Value</div>
+                <p>
+                    Limod tempor individunt ut labore et dolore manga aliquyam erat, sed diam
+                    voluptua. At vero eos et accusma et justo duo dolores et ea rebum. Stet slta
+                    kasd gubergren, no sea tikmata sanctus est Lorem ipsum dolor sit amet.
+                </p>
+                <hr>
+                <div>@Model.Profile.Email</div>
+            </div>
+            <a asp-controller="Account" asp-action="SignOut">Sign Out</a>
+        </div>
+    </div>
+</section>
